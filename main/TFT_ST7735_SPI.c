@@ -17,42 +17,14 @@
 #define SPI_BUS TFT_HSPI_HOST
 
 void tft_st7735_spi_init() {
-    // test_sd_card();
-    // ========  PREPARE DISPLAY INITIALIZATION  =========
     esp_err_t ret;
-
-    // === SET GLOBAL VARIABLES ==========================
-    // tft_disp_type = DEFAULT_DISP_TYPE;
-    // tft_disp_type = DISP_TYPE_ILI9341;
-    // tft_disp_type = DISP_TYPE_ILI9488;
-    tft_disp_type = DISP_TYPE_ST7735B;
-    //tft_disp_type = DISP_TYPE_ST7735R;
-    // ===================================================
-
-    // ===================================================
-    // === Set display resolution if NOT using default ===
-    // === DEFAULT_TFT_DISPLAY_WIDTH &                 ===
-    // === DEFAULT_TFT_DISPLAY_HEIGHT                  ===
-    //_width = DEFAULT_TFT_DISPLAY_WIDTH;  // smaller dimension
-    //_height = DEFAULT_TFT_DISPLAY_HEIGHT; // larger dimension
-    _width = 128;  // smaller dimension
-    _height = 160; // larger dimension
-    // ===================================================
-
-    // ===================================================
-    // ==== Set maximum spi clock for display read    ====
-    //      operations, function 'find_rd_speed()'    ====
-    //      can be used after display initialization  ====
-    //max_rdclock = 8000000;
+    tft_disp_type = DEFAULT_DISP_TYPE;
+    _width = DEFAULT_TFT_DISPLAY_WIDTH;  // smaller dimension
+    _height = DEFAULT_TFT_DISPLAY_HEIGHT; // larger dimension
     max_rdclock = 8000000;
-    // ===================================================
-
-    // ====================================================================
-    // === Pins MUST be initialized before SPI interface initialization ===
-    // ====================================================================
-    TFT_PinsInit();
 
     // ====  CONFIGURE SPI DEVICES(s)  ====================================================================================
+    TFT_PinsInit();
 
     spi_lobo_device_handle_t spi;
 
